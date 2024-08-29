@@ -50,7 +50,7 @@ Cypress.Commands.add(
 
 Cypress.Commands.add("detalhePedido", () => {
   const detalhePedido = () => {
-    cy.scrollTo("top");
+    cy.scrollTo("bottom");
     cy.get("[data-test='inventory-item-desc']").eq(1).click();
   };
   detalhePedido();
@@ -87,4 +87,15 @@ Cypress.Commands.add("finalizarPedido", () => {
   };
 
   finalizarPedido();
+});
+
+Cypress.Commands.add("logout", () => {
+  const logout = () => {
+    cy.get('[id="react-burger-menu-btn"]').should("be.visible");
+    cy.get('[id="react-burger-menu-btn"]').click();
+    //cy.get("bm-menu-wrap").should("be.visible");
+    cy.get('[data-test="logout-sidebar-link"]').click();
+    cy.url().should("contain", "Login");
+  };
+  logout();
 });
