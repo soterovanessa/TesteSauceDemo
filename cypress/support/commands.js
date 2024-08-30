@@ -80,10 +80,11 @@ Cypress.Commands.add("removerProduto", () => {
 
 Cypress.Commands.add("finalizarPedido", () => {
   const finalizarPedido = () => {
-    cy.get(selectorsList.firstName).type("Vanessa");
-    cy.get(selectorsList.lastName).type("teste");
-    cy.get(selectorsList.zipCode).type("55024740");
+    cy.get(selectorsList.firstName).type(chance.name());
+    cy.get(selectorsList.lastName).type(chance.last());
+    cy.get(selectorsList.zipCode).type(chance.zip());
     cy.get("[name='continue']").click();
+    cy.get('[data-test="finish"]').click();
   };
 
   finalizarPedido();
